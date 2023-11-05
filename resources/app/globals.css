@@ -3,6 +3,8 @@
   --color:#000;
   --sidebar-width:345px;
   --sidebar-color:#F4F4F4;
+  --primary-text:#424242;
+  --tab-hover-color:#ebebeb;
 }
 
 /* @media (prefers-color-scheme: dark) {

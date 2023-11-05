@@ -1,4 +1,4 @@
-import styles from "@styles/dashboardLayout.module.css"
+import styles from "@styles/dashboardLayout.module.scss"
 import Sidebar from "@components/Sidebar"
 
 

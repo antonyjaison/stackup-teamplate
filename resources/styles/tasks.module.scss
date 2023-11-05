@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .task_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+}
