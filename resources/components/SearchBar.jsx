@@ -1,13 +1,15 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
-import styles from "@styles/searchbar.module.css"
+import styles from "@styles/searchbar.module.css";
+import { Search } from "lucide-react";
 
 const SearchBar = () => {
   return (
     <form className={styles.wrapper}>
-        <MagnifyingGlassIcon className="icon"/>
-        <input type="text"  className={styles.input} placeholder="Search"/>
+      <div>
+        <Search className="icon" size={22} />
+      </div>
+      <input type="text" className={styles.input} placeholder="Search" />
     </form>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

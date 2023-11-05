@@ -1,13 +1,13 @@
 import styles from "@styles/sidebar.module.css"
-import { Bars3Icon } from '@heroicons/react/24/outline'
 import SearchBar from "./SearchBar"
+import { Menu } from 'lucide-react'
 
 const Sidebar = () => {
   return (
     <div className={styles.wrapper}>
         <div className={styles.logo}>
             <h3 className={styles.title}>Menu</h3>
-            <Bars3Icon className={styles.icon}/>
+            <Menu className="icon" size={22}/>
         </div>
         <SearchBar/>
     </div>

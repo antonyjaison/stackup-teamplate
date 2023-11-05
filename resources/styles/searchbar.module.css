@@ -1,8 +1,8 @@
 .wrapper {
-  height: fit-content;
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
   border-radius: 7px;
   border: 1px solid #ebebeb;
   padding: 7px;
@@ -11,12 +11,12 @@
   border: none;
   background-color: transparent;
   outline: none;
-  color: #7c7c7c;
-  font-size: 18px;
+  color: #424242;
+  font-size: 16px;
   font-weight: 500;
 }
 .input::placeholder {
-  color: #7c7c7c;
-  font-size: 18px;
+  color: #424242;
+  font-size: 16px;
   font-weight: 500;
 }
