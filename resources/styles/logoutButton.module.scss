@@ -1,0 +1,23 @@
+.wrapper {
+  width: 60%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary-text);
+  cursor: pointer;
+  .left_section {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    p{
+        font-size: 18px;
+        color: var(--primary-text);
+    }
+  }
+}

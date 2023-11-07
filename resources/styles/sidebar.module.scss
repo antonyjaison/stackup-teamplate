@@ -6,7 +6,18 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+.top_section{
+    display: flex;
+    flex-direction: column;
     gap: 20px;
+
+}
+.bottom_section{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 .logo{
     width: 100%;

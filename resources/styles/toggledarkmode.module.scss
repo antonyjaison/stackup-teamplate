@@ -1,0 +1,26 @@
+.wrapper{
+    width: fit-content;
+    display: flex;
+    background-color: #DFDFDF;
+    border-radius: 25px;
+    padding: 5px;
+    button{
+        padding: 8px 25px;
+        height: fit-content;
+        flex: 1;
+        border: none;
+        background-color: #fff;
+        border-radius: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #A3A3A3;
+        cursor: pointer;
+    }
+    
+    .active{
+        color: var(--primary-text);
+        font-weight: 700;
+    }
+}
