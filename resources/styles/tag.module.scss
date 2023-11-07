@@ -1,0 +1,11 @@
+.wrapper {
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: #b2d6e1;
+  cursor: pointer;
+  p {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--primary-text);
+  }
+}

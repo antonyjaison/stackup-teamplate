@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import { Menu } from "lucide-react";
 import Tasks from "./Tasks";
 import Lists from "./Lists";
+import Tags from "./Tags";
 
 const Sidebar = () => {
   return (
@@ -13,9 +14,10 @@ const Sidebar = () => {
       </div>
       <SearchBar />
       <Tasks />
-      <hr style={{ borderTop: "0.5px solid #D9D9D9" }} />
+      <hr style={{ borderTop: "0.5px solid var(--line-color)" }} />
       <Lists />
-      <hr style={{ borderTop: "0.5px solid #D9D9D9" }} />
+      <hr style={{ borderTop: "0.5px solid var(--line-color)" }} />
+      <Tags/>
     </div>
   );
 };

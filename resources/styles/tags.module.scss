@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .tags_section{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+}
