@@ -22,10 +22,14 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
 
           <div className={styles.add_task}>
             <input type="text" placeholder="- Add task" />
-            <button>
-              <Plus width={30} />
-            </button>
+            <div className={styles.add_button}>
+              <input type="date" placeholder="Date" />
+              <button>
+                <Plus width={30} />
+              </button>
+            </div>
           </div>
+          
         </div>
       </div>
     );

@@ -37,6 +37,15 @@
     justify-content: space-between;
     align-items: center;
     color: var(--primary-text);
+    .add_button{
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      input[type="date"]{
+        color: var(--primary-text);
+        font-size: 15px;
+      }
+    }
     input,
     button {
       border: none;
