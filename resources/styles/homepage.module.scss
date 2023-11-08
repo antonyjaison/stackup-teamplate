@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background: url("/images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  .dim_layer {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    nav {
+      padding: 40px 70px;
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a{
+        font-size: 25px;
+      }
+    }
+    .content {
+      padding: 30px 70px;
+      h1 {
+        color: #fff;
+        font-family: Potta One;
+        font-size: 70px;
+        font-weight: 400;
+        span {
+          color: #acdb83;
+          font-size: 50px;
+        }
+      }
+      p {
+        width: 600px;
+        color: #fff;
+        font-family: Potta One;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+  }
+}
