@@ -1,26 +1,29 @@
 .wrapper{
-    overflow-y: hidden;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("/images/login_bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
 }
 .herosection{
     width: 60%;
     height: 100%;
     float: left;
     padding: 40px;
-    
 }
-
-
 .loginsection{
-    width: 40%;
+    width: 35%;
     height: 100%;
     float: right;
     display: flex;
     flex-direction: column;
     padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
 }
-
-
-
 .lor{
     display: flex;
     justify-content: center;
@@ -71,7 +74,7 @@
     padding: 20px;
 }
 .txt input{
-    width:  70vh;
+    width:  500px;
     height: 100%;
     padding: 10px; 
     margin: 20px;
@@ -116,8 +119,7 @@
     align-self: flex-start;
 }
 .button{
-    
-    width:70vh;
+    width:500px;
     height:30px;
     border-radius: 40px ;
     padding: 20px;
@@ -126,6 +128,7 @@
     justify-content: center;
     background-color: black;
     font-size: large;
+    border: none;
 }
 .button span {
     cursor: pointer;
