@@ -18,7 +18,7 @@ const StickyWall = ({ backgroundColor, addTask }) => {
         >
           <Plus size={50} />
         </div>
-        <AddDataPopup isOpen={dataPopupOpen} onClose={() => setDataPopupOpen(false)} addTask={true}/>
+        <AddDataPopup bgColor={backgroundColor} isOpen={dataPopupOpen} onClose={() => setDataPopupOpen(false)} addTask={true}/>
       </>
     );
   } else
@@ -38,7 +38,7 @@ const StickyWall = ({ backgroundColor, addTask }) => {
             <p>- plan a socicl media content</p>
           </div>
         </div>
-        <AddDataPopup isOpen={updatePopup} onClose={() => setUpdatePopup(false)} addTask={false}/>
+        <AddDataPopup bgColor={backgroundColor} isOpen={updatePopup} onClose={() => setUpdatePopup(false)} addTask={false}/>
       </>
     );
 };
