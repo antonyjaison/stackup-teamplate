@@ -5,21 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import signIn from "@firebase/auth/signin";
 import { saveToLocalStorage } from "@utils/localstorage";
-import { useRef, useState,useLayoutEffect } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector,useDispatch } from "react-redux";
 import { setUserLogin } from "@features/userSlice";
-// import { IsAuthenticated } from "@utils/auth";
-// import { redirect } from "next/navigation";
+import { db } from "@firebase/config";
+import {collection, addDoc, Timestamp} from 'firebase/firestore'
 
 const page = () => {
-
-  // useLayoutEffect(() => {
-  //   const IsAuth = IsAuthenticated;
-  //   if(!IsAuth){
-  //     redirect("/dashboard")
-  //   }
-  // }, [])
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -74,6 +67,17 @@ const page = () => {
         accessToken,
         email:resEmail,
       };
+
+      // try {
+      //   await addDoc(collection(db, 'users'), {
+      //     uid: uid,
+      //     email: email,
+      //     created: Timestamp.now()
+      //   })
+      //   onClose()
+      // } catch (err) {
+      //   alert(err)
+      // }
 
       saveToLocalStorage(data);
       dispatch(setUserLogin(data));

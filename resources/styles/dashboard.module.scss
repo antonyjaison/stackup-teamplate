@@ -1,12 +1,18 @@
 .wrapper {
-
-    height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .user {
+    height: fit-content;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-  h3 {
-    color: var(--primary-text);
-    font-size: 50px;
-    font-weight: 700;
-}
+
+    h3 {
+      color: var(--primary-text);
+      font-size: 50px;
+      font-weight: 700;
+    }
+  }
 }

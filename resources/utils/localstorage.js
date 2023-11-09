@@ -4,8 +4,8 @@ export const saveToLocalStorage = (data) => {
 }
 
 // get from localstorage
-export const getFromLocalStorage = () => {
-    const data = localStorage.getItem('data');
+export const getFromLocalStorage = (name) => {
+    const data = localStorage.getItem(name);
     if (data) {
         return JSON.parse(data);
     }

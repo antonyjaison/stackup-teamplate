@@ -6,6 +6,9 @@ import { useState, useRef } from "react";
 import signUp from "@firebase/auth/signup";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { db } from "@firebase/config";
+import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import { saveToLocalStorage } from "@utils/localstorage";
 
 const Signup = () => {
   // states for form data
@@ -34,7 +37,7 @@ const Signup = () => {
   };
 
   const submitData = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (email == "" || !validateEmail(email)) {
       emailRef.current.style.borderBottom = "1px solid red";
     }
@@ -45,6 +48,32 @@ const Signup = () => {
     if (email != "" && password != "" && validateEmail(email)) {
       const { result, error } = await signUp(email, password);
 
+      const user = result?.user;
+
+      const uid = user.uid;
+      const accessToken = user.accessToken;
+      const resEmail = user.email;
+
+      const data = {
+        uid,
+        accessToken,
+        email: resEmail,
+      };
+
+      saveToLocalStorage(data);
+
+      try {
+        await addDoc(collection(db, "users"), {
+          uid: uid,
+          email: email,
+          created: Timestamp.now(),
+        });
+      } catch (err) {
+        alert(err);
+      }
+
+      console.log(data);
+
       if (error) {
         return console.log(error.message);
       }
@@ -53,7 +82,7 @@ const Signup = () => {
       console.log(result);
       setEmail("");
       setPassword("");
-      return router.push("/dashboard")
+      return router.push("/dashboard");
     }
   };
 
@@ -96,7 +125,11 @@ const Signup = () => {
               <div className={styles.Reem}>
                 <a href="#">Forgot Password ?</a>
               </div>
-              <button type="submit" onClick={submitData} className={styles.button}>
+              <button
+                type="submit"
+                onClick={submitData}
+                className={styles.button}
+              >
                 <span>Signup</span>
               </button>
             </div>
