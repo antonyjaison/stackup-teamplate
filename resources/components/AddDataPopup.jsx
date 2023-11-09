@@ -3,8 +3,9 @@
 import styles from "@styles/adddata.module.scss";
 import { X, Plus, Trash } from "lucide-react";
 import { useState } from "react";
-// import { db } from "@firebase/config";
-// import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import { db } from "@firebase/config";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { useSelector } from "react-redux";
 
 const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
   if (!isOpen) return null;
@@ -13,6 +14,8 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDate, setTaskDate] = useState("");
     const [task, setTask] = useState("");
+
+    const auth = useSelector((state) => state.user.user);
 
     // functions for adding task
     const handleTaskTitle = (e) => {
@@ -25,12 +28,46 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
       setTask(e.target.value);
     };
 
-    const handleSubmitTitle = (e) => {
+    const handleSubmitTitle = async (e) => {
       e.preventDefault();
       if (taskTitle !== null && taskTitle !== "") {
-        console.log(taskTitle);
+        console.log(auth.uid);
+        try {
+          await addDoc(collection(db, "lists"), {
+            title: taskTitle,
+            createdBy: auth.uid,
+          }).then((docRef) => {
+            console.log(docRef.id);
+          });
+        } catch (err) {
+          alert(err);
+        }
       }
-    }
+    };
+
+    const handleSubmitTask = async (e) => {
+      e.preventDefault();
+      if (
+        task !== null &&
+        task !== "" &&
+        taskDate !== null &&
+        taskDate !== ""
+      ) {
+        try {
+          await addDoc(collection(db, "tasks"), {
+            task: task,
+            duedate: taskDate,
+            listId: "",
+            tags: ["urgent", "important"],
+            createdDate: Timestamp.now(),
+          }).then((docRef) => {
+            console.log(docRef.id);
+          });
+        } catch (err) {
+          alert(err);
+        }
+      }
+    };
 
     return (
       <div className={styles.popup_container} onClick={onClose}>
@@ -54,25 +91,27 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
           </div>
           <hr color="#000" style={{ opacity: 0.4 }} />
 
-          <div className={styles.add_task}>
-            <input
-              type="text"
-              placeholder="- Add task"
-              value={task}
-              onChange={handleTask}
-            />
-            <div className={styles.add_button}>
+          <form>
+            <div className={styles.add_task}>
               <input
-                type="date"
-                placeholder="Date"
-                value={taskDate}
-                onChange={handleTaskDate}
+                type="text"
+                placeholder="- Add task"
+                value={task}
+                onChange={handleTask}
               />
-              <button>
-                <Plus width={30} />
-              </button>
+              <div className={styles.add_button}>
+                <input
+                  type="date"
+                  placeholder="Date"
+                  value={taskDate}
+                  onChange={handleTaskDate}
+                />
+                <button type="submit" onClick={handleSubmitTask}>
+                  <Plus width={30} />
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );

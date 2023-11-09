@@ -4,7 +4,8 @@ import { Plus } from "lucide-react";
 import AddDataPopup from "./AddDataPopup";
 import { useState } from "react";
 
-const StickyWall = ({ backgroundColor, addTask }) => {
+const StickyWall = ({ backgroundColor, addTask, data }) => {
+  console.log(data)
   const [dataPopupOpen, setDataPopupOpen] = useState(false);
   const [updatePopup, setUpdatePopup] = useState(false)
 
@@ -29,13 +30,13 @@ const StickyWall = ({ backgroundColor, addTask }) => {
           className={styles.wrapper}
           onClick={() => setUpdatePopup(true)}
         >
-          <h3 className={styles.task_heading}>Social media</h3>
+          <h3 className={styles.task_heading}>{data.data.title}</h3>
           <div className={styles.tasks}>
-            <p>- plan a socicl media content</p>
-            <p>- plan socicl content</p>
-            <p>- plan a socicl media content</p>
-            <p>- plan a socicl</p>
-            <p>- plan a socicl media content</p>
+            {data.tasks.map(task => {
+              return(
+                <p>- {task.data.task}</p>
+              )
+            })}
           </div>
         </div>
         <AddDataPopup bgColor={backgroundColor} isOpen={updatePopup} onClose={() => setUpdatePopup(false)} addTask={false}/>

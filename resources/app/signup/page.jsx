@@ -66,7 +66,6 @@ const Signup = () => {
         await addDoc(collection(db, "users"), {
           uid: uid,
           email: email,
-          created: Timestamp.now(),
         });
       } catch (err) {
         alert(err);

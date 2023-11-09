@@ -1,0 +1,60 @@
+[
+    {
+        "id": "BTZAuUYSThhhzcibOKag",
+        "data": {
+            "createdBy": "2sMlzzwDQ7gOE0eka7Lhc6wEbNo2",
+            "title": "Home"
+        },
+        "tasks": [
+            {
+                "id": "B60q4BLUm4qUaXrWX7JZ",
+                "data": {
+                    "listId": "BTZAuUYSThhhzcibOKag ",
+                    "duedate": "2023-11-12",
+                    "tags": [
+                        "urgent",
+                        "important"
+                    ],
+                    "task": "Buy vegitables"
+                }
+            }
+        ]
+    },
+    {
+        "id": "FTdFbZcDfKUOBDDtxL5R",
+        "data": {
+            "title": "lorem",
+            "createdBy": "2sMlzzwDQ7gOE0eka7Lhc6wEbNo2"
+        },
+        "tasks": []
+    },
+    {
+        "id": "SV7bxp4mQGvrpOu11t3w",
+        "data": {
+            "createdBy": "2sMlzzwDQ7gOE0eka7Lhc6wEbNo2",
+            "title": "Work"
+        },
+        "tasks": []
+    },
+    {
+        "id": "ZxvpUPpwK1aoSxmJUecV",
+        "data": {
+            "title": "Social media",
+            "createdBy": "2sMlzzwDQ7gOE0eka7Lhc6wEbNo2"
+        },
+        "tasks": [
+            {
+                "id": "79HroGLhRvNuzEJJu6ON",
+                "data": {
+                    "listId": " ZxvpUPpwK1aoSxmJUecV ",
+                    "tags": [
+                        "urgent",
+                        "important"
+                    ],
+                    "task": "a social media post",
+                    "duedate": "2023-11-11"
+                }
+            }
+        ]
+    }
+]
