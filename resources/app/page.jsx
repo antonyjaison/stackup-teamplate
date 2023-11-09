@@ -1,7 +1,8 @@
 import styles from "@styles/homepage.module.scss";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home() {  
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -26,7 +27,6 @@ export default function Home() {
 
           <div></div>
           <div></div>
-
         </div>
       </div>
     </>

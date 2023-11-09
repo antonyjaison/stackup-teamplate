@@ -8,7 +8,7 @@ const Tags = () => {
       <h3>Tags</h3>
       <div className={styles.tags_section}>
         {tags.map(tag => {
-          return <Tag name={tag} />;
+          return <Tag key={tag} name={tag} />;
         })}
       </div>
     </div>

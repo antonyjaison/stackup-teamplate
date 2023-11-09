@@ -5,13 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import signIn from "@firebase/auth/signin";
 import { saveToLocalStorage } from "@utils/localstorage";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState,useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
-import { getFromLocalStorage } from "@utils/localstorage";
+import { useSelector,useDispatch } from "react-redux";
+import { setUserLogin } from "@features/userSlice";
+// import { IsAuthenticated } from "@utils/auth";
+// import { redirect } from "next/navigation";
 
 const page = () => {
 
+  // useLayoutEffect(() => {
+  //   const IsAuth = IsAuthenticated;
+  //   if(!IsAuth){
+  //     redirect("/dashboard")
+  //   }
+  // }, [])
+
   const router = useRouter();
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.user.user);
+
+  console.log(auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,8 +53,6 @@ const page = () => {
   const submitData = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
-
     if (email == "" || !validateEmail(email)) {
       emailRef.current.style.borderBottom = "1px solid red";
     }
@@ -60,10 +72,13 @@ const page = () => {
       const data = {
         uid,
         accessToken,
-        resEmail,
+        email:resEmail,
       };
 
       saveToLocalStorage(data);
+      dispatch(setUserLogin(data));
+      console.log(data);
+
 
       if (error) {
         return console.log(error.message);
