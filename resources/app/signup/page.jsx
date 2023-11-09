@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import signUp from "@firebase/auth/signup";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Signup = () => {
   // states for form data
@@ -100,8 +101,8 @@ const Signup = () => {
               </button>
             </div>
             <div className={styles.dont}>
-              <p>Don't have an account ?</p>
-              <a href="#">Sign Up.</a>
+              <p>Already have an account?</p>
+              <Link href="/login">Login</Link>
             </div>
           </div>
         </form>
