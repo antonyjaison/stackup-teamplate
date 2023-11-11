@@ -15,7 +15,6 @@ const taskSlice = createSlice({
             state.lists = action.payload;
         },
         addTasks:(state,action)=>{
-            console.log(action.payload)
             state.tasks = action.payload;
         },
 

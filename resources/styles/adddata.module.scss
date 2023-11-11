@@ -35,11 +35,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .add_button{
+    .add_button {
       height: fit-content;
       display: flex;
       align-items: center;
-
     }
 
     button {
@@ -66,45 +65,16 @@
       font-size: 40px;
     }
   }
-  .tasks {
-    height: 85%;
+  .title_input {
     display: flex;
-    flex-direction: column;
-    .pending,.completed {
-      height: 50%;
+    justify-content: space-between;
+    .buttons {
+      width: 90px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      overflow-y: scroll;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      .completed_task{
-        text-decoration: line-through;
-      }
-      .task {
-        height: fit-content;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        label {
-          color: var(--primary-text);
-          font-size: 22px;
-          font-weight: 500;
-        }
-      }
-    }
-    .completed {
-      height: 50%;
-      margin-top: 10px;
-      h4 {
-        color: var(--primary-text);
-        font-size: 18px;
-        font-weight: 500;
-      }
+      gap: 30px;
     }
   }
+
   hr {
     margin: 10px 0;
   }
@@ -113,6 +83,74 @@
     padding: 0 10px;
     input {
       font-size: 20px;
+    }
+  }
+}
+
+.popup_content_data {
+  width: 850px;
+  .tasks {
+    display: flex;
+    .pending {
+      height: 400px;
+      width: 49%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h3 {
+        color: #000;
+        font-size: 20px;
+        font-weight: 500;
+        opacity: 0.4;
+      }
+      .pending_tasks {
+        .pend_task {
+          margin: 10px 0;
+          height: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          label {
+            color: #000;
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+      }
+      .add_task{
+        border-bottom: 1px solid #0000008f;
+      }
+    }
+    .line {
+      width: 1px;
+      height: 300px;
+      background-color: #0000008f;
+    }
+    .completed {
+      width: 49%;
+      padding: 20px;
+      h3 {
+        color: #000000;
+        font-size: 20px;
+        font-weight: 500;
+        opacity: 0.4;
+      }
+      .completed_tasks{
+        .comp_task {
+          margin: 10px 0;
+          height: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          label {
+            color: #000;
+            font-size: 20px;
+            font-weight: 500;
+            text-decoration: line-through;
+          }
+        }
+      }
     }
   }
 }

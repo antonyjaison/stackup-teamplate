@@ -12,7 +12,7 @@ export default function isAuth(Component) {
 
     const auth = user;
 
-    console.log(auth)
+    // console.log(auth)
 
     useEffect(() => {
       if (!auth) {

@@ -78,7 +78,7 @@ const Signup = () => {
       }
 
       // else successful
-      console.log(result);
+      // console.log(result);
       setEmail("");
       setPassword("");
       return router.push("/dashboard");

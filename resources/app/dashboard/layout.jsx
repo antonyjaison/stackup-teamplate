@@ -11,14 +11,14 @@ const UserDashboardlayout = ({ children }) => {
   const dispatch = useDispatch()
 
   const auth = getFromLocalStorage("data")
-  console.log(auth)
+  // console.log(auth)
 
   const user = useSelector((state) => state.user.user)
 
   useEffect(() => {
     dispatch(setUserLogin(auth))
   },[])
-  console.log(user)
+  // console.log(user)
   return (
     <main className={styles.wrapper}>
         <div className={styles.sidebar}>

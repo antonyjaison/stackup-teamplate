@@ -5,9 +5,10 @@ import AddDataPopup from "./AddDataPopup";
 import { useState } from "react";
 
 const StickyWall = ({ backgroundColor, addTask, data }) => {
-  console.log(data)
   const [dataPopupOpen, setDataPopupOpen] = useState(false);
   const [updatePopup, setUpdatePopup] = useState(false)
+
+  console.log(data)
 
   if (addTask) {
     return (
@@ -39,7 +40,7 @@ const StickyWall = ({ backgroundColor, addTask, data }) => {
             })}
           </div>
         </div>
-        <AddDataPopup bgColor={backgroundColor} isOpen={updatePopup} onClose={() => setUpdatePopup(false)} addTask={false}/>
+        <AddDataPopup data={data} bgColor={backgroundColor} isOpen={updatePopup} onClose={() => setUpdatePopup(false)} addTask={false}/>
       </>
     );
 };

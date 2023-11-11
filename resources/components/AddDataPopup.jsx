@@ -2,12 +2,12 @@
 
 import styles from "@styles/adddata.module.scss";
 import { X, Plus, Trash } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "@firebase/config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { useSelector } from "react-redux";
 
-const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
+const AddDataPopup = ({ isOpen, onClose, addTask, bgColor, data }) => {
   if (!isOpen) return null;
 
   if (addTask) {
@@ -31,7 +31,7 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
     const handleSubmitTitle = async (e) => {
       e.preventDefault();
       if (taskTitle !== null && taskTitle !== "") {
-        console.log(auth.uid);
+        // console.log(auth.uid);
         try {
           await addDoc(collection(db, "lists"), {
             title: taskTitle,
@@ -116,80 +116,97 @@ const AddDataPopup = ({ isOpen, onClose, addTask, bgColor }) => {
       </div>
     );
   } else
-    return (
-      <div className={styles.popup_container} onClick={onClose}>
-        <div
-          style={{ backgroundColor: bgColor }}
-          className={styles.popup_content}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className={styles.title_input}>
-            <h2>Social Media</h2>
+    data?.tasks.map((task) => {
+      console.log(task.data.task);
+    });
+
+  const [pending, setPending] = useState([]);
+  const [finished, setFinished] = useState([]);
+
+  useEffect(() => {
+    let newPending = [];
+    let newFinished = [];
+
+    data?.tasks.forEach((task) => {
+      if (task.data.completed) {
+        newFinished.push(task);
+      } else {
+        newPending.push(task);
+      }
+    });
+
+    setPending(newPending);
+    setFinished(newFinished);
+  }, [data]);
+
+  return (
+    <div className={styles.popup_container} onClick={onClose}>
+      <div
+        style={{ backgroundColor: bgColor }}
+        className={`${styles.popup_content} ${styles.popup_content_data}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.title_input}>
+          <h2>{data?.data?.title}</h2>
+          <div className={styles.buttons}>
             <button>
               <Trash width={50} />
             </button>
+            <button onClick={onClose}>
+              <X width={60} />
+            </button>
           </div>
-          <hr color="#000" style={{ opacity: 0.4 }} />
+        </div>
+        {/* <hr color="#000" style={{ opacity: 0.4 }} /> */}
 
-          <div className={styles.tasks}>
-            <div className={styles.pending}>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={styles.task}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
+        <div className={styles.tasks}>
+          <div className={styles.pending}>
+            <div>
+              <h3>Pending</h3>
+              <div className={styles.pending_tasks}>
+                {pending.map((task) => {
+                  return (
+                    <div className={styles.pend_task}>
+                      <input type="checkbox" id={task?.id} />
+                      <label htmlFor={task?.id}>-{task?.data.task}</label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className={styles.completed}>
-              <h4>Finished</h4>
-              <div className={`${styles.task} ${styles.completed_task}`}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
+            <form className={styles.add_task}>
+              <input type="text" placeholder="- Add new task" />
+              <div className={styles.add_button}>
+                <input type="date" placeholder="Date" />
+                <button type="submit">
+                  <Plus width={30} />
+                </button>
               </div>
-              <div className={`${styles.task} ${styles.completed_task}`}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={`${styles.task} ${styles.completed_task}`}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={`${styles.task} ${styles.completed_task}`}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
-              <div className={`${styles.task} ${styles.completed_task}`}>
-                <input id="ins" type="checkbox" />
-                <label htmlFor="ins">Post on Instagram</label>
-              </div>
+            </form>
+          </div>
+          <div className={styles.line}></div>
+          <div className={styles.completed}>
+            <h3>Completed</h3>
+            <div className={styles.completed_tasks}>
+              {finished.map((task) => {
+                return (
+                  <div className={styles.pend_task}>
+                    <input
+                      type="checkbox"
+                      id={task?.id}
+                      checked={task?.data.completed}
+                    />
+                    <label htmlFor="ins">{task?.data.task}</label>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default AddDataPopup;

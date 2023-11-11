@@ -24,7 +24,6 @@ const StickyWalls = () => {
 
   const auth = useSelector((state) => state.user.user);
   const listss = useSelector((state) => state.task.tasks);
-  console.log(listss);
   const uid = auth?.uid;
 
   useEffect(() => {
@@ -59,6 +58,8 @@ const StickyWalls = () => {
   dispatch(addLists(lists));
   dispatch(addTasks(tasks));
 
+  // console.log(tasks)
+
   useEffect(() => {
     // Assuming 'lists' and 'tasks' are set from an API or other source
     const combinedArray = lists.map((list) => {
@@ -74,7 +75,7 @@ const StickyWalls = () => {
     setCombinedData(combinedArray);
   }, [lists, tasks]);
 
-  console.log(combinedData);
+  // console.log(combinedData);
 
   // Array of hex colors
   const colors = [
@@ -103,7 +104,6 @@ const StickyWalls = () => {
   // Function to get the color for each StickyWall
   const getColor = (index) => colors[index % colors.length];
 
-  const data = ["Social media", "Work", "Personal", "Important"];
 
   // Create an array of StickyWall components with unique colors
   const stickyWallComponents = combinedData.map((data, index) => (

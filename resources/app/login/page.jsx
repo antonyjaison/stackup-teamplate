@@ -18,7 +18,7 @@ const page = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.user.user);
 
-  console.log(auth);
+  // console.log(auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -81,7 +81,7 @@ const page = () => {
 
       saveToLocalStorage(data);
       dispatch(setUserLogin(data));
-      console.log(data);
+      // console.log(data);
 
 
       if (error) {
